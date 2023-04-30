@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "../LoginPage/Login.scss";
+import axios from "axios";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://localhost:5000/user", { email, password })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="login-body">
       <div class="wrapper">
         <div className="from-box login">
           <h2>Login</h2>
-          <form action="#">
+          <form onSubmit={handleSubmit}>
             <div className="input-box">
-              <input type="email" required />
+              <input
+                type="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <label>Email</label>
             </div>
             <div className="input-box">
-              <input type="password" required />
+              <input
+                type="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <label>Password</label>
             </div>
             <button type="submit" className="btn">
