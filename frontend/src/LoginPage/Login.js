@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+=======
+import React from "react";
+>>>>>>> parent of 6cae330 (login part)
 import "../LoginPage/Login.scss";
-import axios from "axios";
 
 export default function Login() {
+<<<<<<< HEAD
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -25,13 +29,16 @@ export default function Login() {
       .catch((err) => console.log(err));
   }
 
+=======
+>>>>>>> parent of 6cae330 (login part)
   return (
     <div className="login-body">
       <div className="wrapper">
         <div className="from-box login">
           <h2>Login</h2>
-          <form onSubmit={handleSubmit}>
+          <form action="#">
             <div className="input-box">
+<<<<<<< HEAD
               <input
                 type="email"
                 required
@@ -49,6 +56,13 @@ export default function Login() {
                   setValues({ ...values, password: e.target.value })
                 }
               />
+=======
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div className="input-box">
+              <input type="password" required />
+>>>>>>> parent of 6cae330 (login part)
               <label>Password</label>
             </div>
             <button type="submit" className="btn">

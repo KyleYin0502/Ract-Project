@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
+<<<<<<< HEAD
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -35,6 +36,9 @@ app.use(
     credentials: true,
   })
 );
+=======
+app.use(cors());
+>>>>>>> parent of 6cae330 (login part)
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -51,6 +55,7 @@ app.get("/product_list", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 app.post("/login", (req, res) => {
   const sql = "SELECT * FROM user WHERE email = ? AND password = ?";
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
@@ -68,6 +73,8 @@ app.post("/login", (req, res) => {
   });
 });
 
+=======
+>>>>>>> parent of 6cae330 (login part)
 app.listen(5000, () => {
   console.log("Example app listening on port 5000!");
 });
