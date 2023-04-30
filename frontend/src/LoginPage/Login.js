@@ -1,16 +1,30 @@
 import React, { useState } from "react";
+import { Await, useNavigate } from "react-router-dom";
 import "../LoginPage/Login.scss";
 import axios from "axios";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/user", { email, password })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .post("http://localhost:5000/login", values)
+      .then((res) => {
+        if (res.data.Status === "Success") {
+          navigate("/");
+        } else {
+          alert(res.data.Message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -23,7 +37,9 @@ export default function Login() {
               <input
                 type="email"
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) =>
+                  setValues({ ...values, email: e.target.value })
+                }
               />
               <label>Email</label>
             </div>
@@ -31,7 +47,9 @@ export default function Login() {
               <input
                 type="password"
                 required
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) =>
+                  setValues({ ...values, password: e.target.value })
+                }
               />
               <label>Password</label>
             </div>
