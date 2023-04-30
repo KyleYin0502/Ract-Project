@@ -1,50 +1,29 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-=======
-import React from "react";
->>>>>>> parent of 6cae330 (login part)
 import "../LoginPage/Login.scss";
+import axios from "axios";
 
 export default function Login() {
-<<<<<<< HEAD
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://127.0.0.1:5000/login", values)
-      .then((res) => {
-        if (res.data.Status === "Success") {
-          navigate("/");
-        } else {
-          alert(res.data.Message);
-        }
-      })
+      .post("http://localhost:5000/user", { email, password })
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
 
-=======
->>>>>>> parent of 6cae330 (login part)
   return (
     <div className="login-body">
-      <div className="wrapper">
+      <div class="wrapper">
         <div className="from-box login">
           <h2>Login</h2>
-          <form action="#">
+          <form onSubmit={handleSubmit}>
             <div className="input-box">
-<<<<<<< HEAD
               <input
                 type="email"
                 required
-                onChange={(e) =>
-                  setValues({ ...values, email: e.target.value })
-                }
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label>Email</label>
             </div>
@@ -52,17 +31,8 @@ export default function Login() {
               <input
                 type="password"
                 required
-                onChange={(e) =>
-                  setValues({ ...values, password: e.target.value })
-                }
+                onChange={(e) => setPassword(e.target.value)}
               />
-=======
-              <input type="email" required />
-              <label>Email</label>
-            </div>
-            <div className="input-box">
-              <input type="password" required />
->>>>>>> parent of 6cae330 (login part)
               <label>Password</label>
             </div>
             <button type="submit" className="btn">
