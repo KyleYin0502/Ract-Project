@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
     <div className="login-body">
-      <div class="wrapper">
+      <div className="wrapper">
         <div className="from-box login">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>

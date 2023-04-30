@@ -22,7 +22,7 @@ app.get("/product_list", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-  const sql = "SELECT * FROM user WHERE user_email = ? AND user_password = ?";
+  const sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) return res.json("Error");
