@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"; /* 多個分頁 */
-import React, { useEffect, useState } from "react";
 import Home from "./HomePage/Home";
 import Product from "./ProductPage/Product";
 import About from "./AboutPage/About";

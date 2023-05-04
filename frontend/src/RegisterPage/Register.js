@@ -1,32 +1,23 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../RegisterPage/Register.scss";
 
 export default function Register() {
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
-      .post("http://localhost:5000/register", values)
+      .post("http://localhost:3001/register", { name, email, password })
       .then((res) => {
-        if (res.data.useState === "Success") {
-          navigate("/login");
-        } else {
-          alert("Error");
-        }
+        console.log(res);
       })
-      .catch((err) => {
-        console.log(err);
-        // display error message to user
-      });
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -39,7 +30,7 @@ export default function Register() {
               <input
                 type="text"
                 required
-                onChange={(e) => setValues({ ...values, name: e.target.value })}
+                onChange={(e) => setName(e.target.value)}
               />
               <label>Username</label>
             </div>
@@ -47,9 +38,7 @@ export default function Register() {
               <input
                 type="email"
                 required
-                onChange={(e) =>
-                  setValues({ ...values, email: e.target.value })
-                }
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label>Email</label>
             </div>
@@ -57,15 +46,14 @@ export default function Register() {
               <input
                 type="password"
                 required
-                onChange={(e) =>
-                  setValues({ ...values, password: e.target.value })
-                }
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label>Password</label>
             </div>
             <button type="submit" className="btn">
               Register
             </button>
+
             <div className="login-register">
               <p>
                 Already have an account?
