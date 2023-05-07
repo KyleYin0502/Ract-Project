@@ -5,7 +5,6 @@ import "./Css/Header.scss";
 export default function Header() {
   const [auth, setAuth] = useState(false);
   const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
 
   axios.defaults.withCredentials = true;
 
@@ -16,7 +15,6 @@ export default function Header() {
         setName(res.data.name);
       } else {
         setAuth(false);
-        setMessage(res.data.Message);
       }
     });
   }, []);
@@ -45,7 +43,7 @@ export default function Header() {
 
         {auth ? (
           <>
-            <a>{name}</a>
+            <a href="#">{name}</a>
             <a href="/" onClick={handleLogout}>
               Logout
             </a>
