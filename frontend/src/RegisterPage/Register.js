@@ -8,7 +8,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ export default function Register() {
       .post("http://localhost:3001/register", { name, email, password })
       .then((res) => {
         console.log(res);
+        navigate("/login");
       })
       .catch((err) => console.log(err));
   };

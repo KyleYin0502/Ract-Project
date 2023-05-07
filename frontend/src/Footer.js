@@ -1,6 +1,5 @@
 import React from "react";
 import "./Css/Footer.scss";
-import Googlemap from "./Googlemap";
 
 export default function Footer() {
   return (
@@ -9,9 +8,7 @@ export default function Footer() {
         <h2 className="logo">Logo</h2>
         <h1 className="logo"> My First React</h1>
       </div>
-      <div>
-        <Googlemap />
-      </div>
+      <div></div>
 
       <div className="footer-list">
         <ul>

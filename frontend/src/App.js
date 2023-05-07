@@ -5,20 +5,26 @@ import About from "./AboutPage/About";
 import Contact from "./ContactPage/Contact";
 import Login from "./LoginPage/Login";
 import Register from "./RegisterPage/Register";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function App() {
   return (
     <>
       {/* Muti-Page*/}
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/product" element={<Product />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-        </Routes>
+        <Header />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/product" element={<Product />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+          </Routes>
+        </div>
+        <Footer />
       </BrowserRouter>
     </>
   );
