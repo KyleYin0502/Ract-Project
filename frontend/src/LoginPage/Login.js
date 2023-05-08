@@ -10,8 +10,10 @@ export default function Login() {
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
+  /*Login Function */
   const handleSubmit = (e) => {
     e.preventDefault();
+    /*Api POST data */
     axios
       .post("http://localhost:3001/login", { email, password })
       .then((res) => {

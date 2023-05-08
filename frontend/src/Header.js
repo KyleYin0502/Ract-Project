@@ -8,6 +8,7 @@ export default function Header() {
 
   axios.defaults.withCredentials = true;
 
+  /* api get data*/
   useEffect(() => {
     axios.get("http://localhost:3001").then((res) => {
       if (res.data.Status === "Success") {
@@ -19,6 +20,7 @@ export default function Header() {
     });
   }, []);
 
+  /*Logout Function */
   const handleLogout = () => {
     axios
       .get("http://localhost:3001/logout")
@@ -38,10 +40,9 @@ export default function Header() {
       <nav className="menu">
         <a href="/">Home</a>
         <a href="/product">Product</a>
-        <a href="/about">About</a>
         <a href="/contact">Contact</a>
-
         {auth ? (
+          /*Already Login*/
           <>
             <a href="#">{name}</a>
             <a href="/" onClick={handleLogout}>
@@ -49,6 +50,7 @@ export default function Header() {
             </a>
           </>
         ) : (
+          /*No Login*/
           <a href="/login">Login</a>
         )}
       </nav>

@@ -10,8 +10,10 @@ export default function Register() {
 
   const navigate = useNavigate();
 
+  /*Register Function */
   const handleSubmit = (e) => {
     e.preventDefault();
+    /*Api POST data */
     axios
       .post("http://localhost:3001/register", { name, email, password })
       .then((res) => {
